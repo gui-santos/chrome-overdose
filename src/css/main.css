@@ -1,0 +1,78 @@
+* {
+  box-sizing: border-box;
+}
+
+html, body {
+  height: 100%;
+}
+
+body {
+  font-family: 'Roboto Mono', monospace;
+  font-size: 16px;
+  color: #000;
+
+  background-color: #fff;
+}
+
+.wrapper {
+  width: 100%;
+  min-height: 100%;
+  padding: 3.5em;
+  /* equal to footer height */
+  margin-bottom: -100px;
+}
+.wrapper:after {
+  content: "";
+  display: block;
+}
+footer, .wrapper:after {
+  height: 100px;
+}
+footer {
+  background: #e0e0e0;
+}
+
+.grid-1200 {
+  width: 80%;
+  max-width: 1200px;
+  margin: auto;
+}
+
+/*
+// BETTER Media queries
+*/
+
+/* Tablets Portrait UP*/
+@media only screen and (min-width: 600px) {
+
+}
+
+/* Tablets Portrait ONLY*/
+@media only screen and (min-width: 600px) and (max-width: 899px) {
+
+}
+
+/* Tablets Landscape UP*/
+@media only screen and (min-width: 900px) {
+
+}
+
+/* Tablets Landscape ONLY*/
+@media only screen and (min-width: 900px) and (max-width: 1199px) {
+
+}
+
+/* Desktops UP*/
+@media only screen and (min-width: 1200px) {
+
+}
+
+/* Desktop ONLY*/
+@media only screen and (min-width: 1200px) and (max-width: 1799px) {
+
+}
+
+/* Big Desktops UP*/
+@media only screen and (min-width: 1800px) {
+
+}
