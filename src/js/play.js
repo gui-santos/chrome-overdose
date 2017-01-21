@@ -194,49 +194,15 @@ var playState = {
     //storing graphics
     this.graphs = [];
 
-    //REDs
-    this.graphs[0] = game.add.graphics(0, 0);
-    this.graphs[0].boundsPadding = 0;
-    this.graphs[0].alpha = 1;
-    this.graphs[0].beginFill(this.colors[0]);
-    this.graphs[0].drawPolygon(this.polygons[0].points);
-    this.graphs[0].endFill();
-
-    this.graphs[1] = game.add.graphics(0, 0);
-    this.graphs[1].boundsPadding = 0;
-    this.graphs[1].alpha = 1;
-    this.graphs[1].beginFill(this.colors[1]);
-    this.graphs[1].drawPolygon(this.polygons[1].points);
-    this.graphs[1].endFill();
-
-    this.graphs[2] = game.add.graphics(0, 0);
-    this.graphs[2].boundsPadding = 0;
-    this.graphs[2].alpha = 1;
-    this.graphs[2].beginFill(this.colors[2]);
-    this.graphs[2].drawPolygon(this.polygons[2].points);
-    this.graphs[2].endFill();
-
-    //ORANGEs
-    this.graphs[3] = game.add.graphics(0, 0);
-    this.graphs[3].boundsPadding = 0;
-    this.graphs[3].alpha = 1;
-    this.graphs[3].beginFill(this.colors[3]);
-    this.graphs[3].drawPolygon(this.polygons[3].points);
-    this.graphs[3].endFill();
-
-    this.graphs[4] = game.add.graphics(0, 0);
-    this.graphs[4].boundsPadding = 0;
-    this.graphs[4].alpha = 1;
-    this.graphs[4].beginFill(this.colors[4]);
-    this.graphs[4].drawPolygon(this.polygons[4].points);
-    this.graphs[4].endFill();
-
-    this.graphs[5] = game.add.graphics(0, 0);
-    this.graphs[5].boundsPadding = 0;
-    this.graphs[5].alpha = 1;
-    this.graphs[5].beginFill(this.colors[5]);
-    this.graphs[5].drawPolygon(this.polygons[5].points);
-    this.graphs[5].endFill();
+    //Building every polygon
+    for (var i = 0; i < this.polygons.length; i++) {
+      this.graphs[i] = game.add.graphics(0, 0);
+      this.graphs[i].boundsPadding = 0;
+      this.graphs[i].alpha = 1;
+      this.graphs[i].beginFill(this.colors[i]);
+      this.graphs[i].drawPolygon(this.polygons[i].points);
+      this.graphs[i].endFill();
+    }
 
     //YELLOWs
   },
