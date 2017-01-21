@@ -35,7 +35,7 @@ var menuState = {
       game.sound.play('g');
       this.menuMusic.destroy();
       game.time.events.loop(250, function () {
-        game.state.start('play');
+        game.state.start('tutorial');
       }, this);
     }
   },

@@ -5,7 +5,7 @@ var loadState = {
 
     game.load.video('logo', 'src/assets/gif_inicio.mp4');
     game.load.video('credits', 'src/assets/creditos_v1.mp4');
-    game.load.video('tutorial', 'src/assets/tutorial.mp4');
+    game.load.video('tutorial', 'src/assets/instructions.mp4');
 
     game.load.audio('main', ['src/assets/sound/leo_synthpop_gameplay.mp3']);
     game.load.audio('menu', ['src/assets/sound/leo_synthpop_menu.mp3']);
@@ -26,6 +26,10 @@ var loadState = {
     game.load.image('btn_back', 'src/assets/back/back.png');
     game.load.image('btn_back_hover', 'src/assets/back/back_btn_hover.png');
     game.load.image('btn_back_press', 'src/assets/back/back_btn_press.png');
+
+    game.load.image('btn_start', 'src/assets/start/start_btn.png');
+    game.load.image('btn_start_hover', 'src/assets/start/start_btn_hover.png');
+    game.load.image('btn_start_press', 'src/assets/start/start_btn_press.png');
   },
   create: function () {
     game.state.start('menu');

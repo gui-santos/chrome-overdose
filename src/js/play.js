@@ -326,7 +326,7 @@ var playState = {
 
   },
   fadeIn: function (polygon, index) {
-    game.add.tween(polygon).to( { alpha: 1 }, 400, Phaser.Easing.Exponential.Out, true, 0);
+    game.add.tween(polygon).to( { alpha: 0.7 }, 400, Phaser.Easing.Exponential.Out, true, 0);
   },
   fadeOut: function (polygon) {
     game.add.tween(polygon).to( { alpha: 0 }, 350, Phaser.Easing.Exponential.Out, true, 0, 0, false);
