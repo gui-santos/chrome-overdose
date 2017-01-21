@@ -9,15 +9,14 @@ html, body {
 body {
   font-family: 'Roboto Mono', monospace;
   font-size: 16px;
-  color: #000;
+  color: #fff;
 
-  background-color: #fff;
+  background-color: #000;
 }
 
 .wrapper {
   width: 100%;
   min-height: 100%;
-  padding: 3.5em;
   /* equal to footer height */
   margin-bottom: -100px;
 }
@@ -28,14 +27,14 @@ body {
 footer, .wrapper:after {
   height: 100px;
 }
-footer {
-  background: #e0e0e0;
-}
 
-.grid-1200 {
-  width: 80%;
-  max-width: 1200px;
-  margin: auto;
+#game {
+  position: absolute;
+  width: 1200px;
+  height: 500px;
+  top: 50%;
+  left: 50%;
+  margin: -250px 0 0 -600px;
 }
 
 /*
