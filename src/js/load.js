@@ -8,6 +8,7 @@ var loadState = {
     game.load.video('tutorial', 'src/assets/tutorial.mp4');
 
     game.load.audio('main', ['src/assets/sound/leo_synthpop_gameplay.mp3']);
+    game.load.audio('menu', ['src/assets/sound/leo_synthpop_menu.mp3']);
 
     game.load.audio('c', ['src/assets/sound/synth_nota1.mp3']);
     game.load.audio('d', ['src/assets/sound/synth_nota2.mp3']);
@@ -16,6 +17,7 @@ var loadState = {
     game.load.audio('g', ['src/assets/sound/synth_nota5.mp3']);
     game.load.audio('a', ['src/assets/sound/synth_nota6.mp3']);
     game.load.audio('b', ['src/assets/sound/synth_nota7.mp3']);
+    game.load.audio('error', ['src/assets/sound/synth_notaerrada.mp3']);
 
     game.load.image('btn_home', 'src/assets/home/btn.jpg');
     game.load.image('btn_hover', 'src/assets/home/btn_hover.jpg');

@@ -244,7 +244,7 @@ var playState = {
     //time
     this.timeLoop = 1000;
     this.polyIndex = Math.floor(Math.random() * (21 - 0)) + 0;
-    this.globalTime = game.time.events.loop(2000, this.makeItFaster, this);
+    this.globalTime = game.time.events.loop(7000, this.makeItFaster, this);
     this.showFreq = game.time.events.loop(this.timeLoop, this.showPoly, this);
 
     this.fadeIn(this.graphs[this.polyIndex]);
@@ -304,6 +304,7 @@ var playState = {
     //check if the player clicked in a wrong spot
     if (!this.isClicked && game.input.activePointer.leftButton.isDown && game.playerLives > 0) {
       game.playerLives--;
+      game.sound.play('error');
       this.isClicked = true;
     }
 
