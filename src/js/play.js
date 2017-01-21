@@ -254,9 +254,18 @@ var playState = {
       }
     }
 
+    //check if the player clicked in a wrong spot
     if (!this.isClicked && game.input.activePointer.leftButton.isDown) {
-      alert('eita');
+      console.log('errou');
+      this.isClicked = true;
     }
+
+    //reset the clicked event
+    if (this.isClicked && game.input.activePointer.leftButton.isUp) {
+      this.isClicked = false;
+    }
+
+    //console.log(this.polyDisplayed.length);
 
     //they need to stay on stage for a while. This time gets shorter as the game plays
   },
@@ -282,6 +291,10 @@ var playState = {
 
     var displayed = false;
 
+    if (this.polyDisplayed.length === 21) {
+      alert('PERDEU OTÁRIO!');
+    }
+
     for (var i = 0; i < this.polyDisplayed.length; i++) {
       if (this.polyIndex === this.polyDisplayed[i]) {
         displayed = true;
@@ -300,6 +313,5 @@ var playState = {
   makeItFaster: function () {
     this.timeLoop = this.timeLoop / 2;
     this.showFreq.delay = this.timeLoop;
-    console.log(this.timeLoop);
   }
 }
