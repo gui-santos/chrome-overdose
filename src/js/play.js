@@ -20,15 +20,15 @@ var playState = {
       '0x00ff00', //green1
       '0x00cd00', //green2
       '0x00a500', //green3
-      '0x0000ff'//blue1
-      '0x0000b9'//blue2
-      '0x000091'//blue3
-      '0x8f00ff'//lpurple1
-      '0x8500cd'//lpurple2
-      '0x7100b9'//lpurple3
-      '0xaf0082'//purple1
-      '0xa5006e'//purple2
-      '0xa5005f'//purple3
+      '0x0000ff', //blue1
+      '0x0000b9', //blue2
+      '0x000091', //blue3
+      '0x8f00ff', //lpurple1
+      '0x8500cd', //lpurple2
+      '0x7100b9', //lpurple3
+      '0xaf0082', //purple1
+      '0xa5006e', //purple2
+      '0xa5005f' //purple3
     ];
 
     //storing points
@@ -56,7 +56,7 @@ var playState = {
         new Phaser.Point(523, 283.9),
         new Phaser.Point(549.2, 272.8),
         new Phaser.Point(549.2, 231.2)
-      ]
+      ],
       orange2: [
         new Phaser.Point(482.4,203.8),
         new Phaser.Point(482.3,299.7),
@@ -69,18 +69,96 @@ var playState = {
         new Phaser.Point(482.3,299.6),
         new Phaser.Point(482.4,203.9)
       ],
-      yellow1: [],
-      yellow2: [],
-      yellow3: [],
-      green1: [],
-      green2: [],
-      green3: [],
-      blue1: [],
-      blue2: [],
-      blue3: [],
-      lpurple1: [],
-      lpurple2: [],
-      lpurple: [],
+      yellow1: [
+        new Phaser.Point(523,283.9),
+        new Phaser.Point(568.1,329),
+        new Phaser.Point(579.1,301.1),
+        new Phaser.Point(549.2,272.8)
+      ],
+      yellow2: [
+        new Phaser.Point(482.3,299.7),
+        new Phaser.Point(551.3,369.6),
+        new Phaser.Point(568.4,328.4),
+        new Phaser.Point(523,283.9)
+      ],
+      yellow3: [
+        new Phaser.Point(424.4,323.9),
+        new Phaser.Point(527.8,425.7),
+        new Phaser.Point(551.3,369.6),
+        new Phaser.Point(482.3,299.7),
+      ],
+      green1: [
+        new Phaser.Point(568.1,329),
+        new Phaser.Point(631.9,329),
+        new Phaser.Point(620.9,301.1),
+        new Phaser.Point(579.1,301.1)
+      ],
+      green2: [
+        new Phaser.Point(551.3,369.6),
+        new Phaser.Point(649.4,369.6),
+        new Phaser.Point(631.9,328.4),
+        new Phaser.Point(568.3,328.4)
+      ],
+      green3: [
+        new Phaser.Point(527.8,425.7),
+        new Phaser.Point(672.8,425.7),
+        new Phaser.Point(649.7,369.6),
+        new Phaser.Point(551.3,369.6)
+      ],
+      blue1: [
+        new Phaser.Point(631.9,329),
+        new Phaser.Point(677,284.2),
+        new Phaser.Point(649.4,272.9),
+        new Phaser.Point(620.9,301.3)
+      ],
+      blue2: [
+        new Phaser.Point(649,369),
+        new Phaser.Point(717.6,300),
+        new Phaser.Point(677,284.2),
+        new Phaser.Point(631.9,328.4)
+      ],
+      blue3: [
+        new Phaser.Point(672.3,425.9),
+        new Phaser.Point(775.6,323.9),
+        new Phaser.Point(717.6,300),
+        new Phaser.Point(649,369)
+      ],
+      lpurple1: [
+        new Phaser.Point(677,284.2),
+        new Phaser.Point(677,220.1),
+        new Phaser.Point(650.7,231.2),
+        new Phaser.Point(649.4,272.9)
+      ],
+      lpurple2: [
+        new Phaser.Point(717.6,300.4),
+        new Phaser.Point(718.2,203.6),
+        new Phaser.Point(677,220.5),
+        new Phaser.Point(677,284.2)
+      ],
+      lpurple3: [
+        new Phaser.Point(775.6,323.8),
+        new Phaser.Point(776.4,179.5),
+        new Phaser.Point(718.2,203.6),
+        new Phaser.Point(717.6,300.4),
+      ],
+      purple1: [
+        new Phaser.Point(677,220.1),
+        new Phaser.Point(631.9,175),
+        new Phaser.Point(621.8,200.1),
+        new Phaser.Point(650.7,231.2)
+      ],
+      purple2: [
+        new Phaser.Point(718.2,203.6),
+        new Phaser.Point(649,134.5),
+        new Phaser.Point(631.9,175),
+        new Phaser.Point(677,220.5)
+      ],
+      purple3: [
+        new Phaser.Point(776.4,179.5),
+        new Phaser.Point(674.2,76),
+        new Phaser.Point(649,134.5),
+        new Phaser.Point(718.2,203.6)
+      ]
     };
 
     //storing polygons
@@ -90,6 +168,8 @@ var playState = {
     this.polygons[2] = new Phaser.Polygon(this.points.red3);
 
     this.polygons[3] = new Phaser.Polygon(this.points.orange1);
+    this.polygons[4] = new Phaser.Polygon(this.points.orange2);
+    this.polygons[5] = new Phaser.Polygon(this.points.orange3);
 
     //storing graphics
     this.graphs = [];
@@ -124,6 +204,21 @@ var playState = {
     this.graphs[3].drawPolygon(this.polygons[3].points);
     this.graphs[3].endFill();
 
+    this.graphs[4] = game.add.graphics(0, 0);
+    this.graphs[4].boundsPadding = 0;
+    this.graphs[4].alpha = 1;
+    this.graphs[4].beginFill(this.colors[4]);
+    this.graphs[4].drawPolygon(this.polygons[4].points);
+    this.graphs[4].endFill();
+
+    this.graphs[5] = game.add.graphics(0, 0);
+    this.graphs[5].boundsPadding = 0;
+    this.graphs[5].alpha = 1;
+    this.graphs[5].beginFill(this.colors[5]);
+    this.graphs[5].drawPolygon(this.polygons[5].points);
+    this.graphs[5].endFill();
+
+    //YELLOWs
   },
   update: function () {
     //collisions for REDs
