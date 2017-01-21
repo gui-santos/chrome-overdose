@@ -161,6 +161,20 @@ var playState = {
       ]
     };
 
+    this.whitePoints = [
+      new Phaser.Point(621.8,200.6),
+      new Phaser.Point(650.3,231.4),
+      new Phaser.Point(649.4,273.4),
+      new Phaser.Point(620.9,301.6),
+      new Phaser.Point(579.1,301.6),
+      new Phaser.Point(549.7,273.1),
+      new Phaser.Point(549.7,231.4),
+      new Phaser.Point(578.2,200.6),
+      new Phaser.Point(621.8,200.6),
+    ];
+
+    this.whitePoly = new Phaser.Polygon(this.whitePoints);
+
     //storing polygons [21]
     this.polygons = [];
     this.polygons[0] = new Phaser.Polygon(this.points.red1);
@@ -205,8 +219,22 @@ var playState = {
       this.graphs[i].endFill();
     }
 
-    //time
+    this.whiteGraph = game.add.graphics(0, 0);
+    this.whiteGraph.boundsPadding = 0;
+    this.whiteGraph.lineStyle(3, '0xffffff', 1);
+    this.whiteGraph.drawPolygon(this.whitePoints);
+
+    this.whiteLine = game.add.graphics(0, 0);
+    this.whiteLine.boundsPadding = 0;
+    this.whiteLine.moveTo(600, 0);
+    this.whiteLine.lineStyle(5, '0xffffff', 1);
+    this.whiteLine.lineTo(600, 200.6);
+
+    //game status
+    this.isClicked = false;
     this.polyDisplayed = [];
+
+    //time
     this.timeLoop = 500;
     this.polyIndex = Math.floor(Math.random() * (21 - 0)) + 0;
     this.globalTime = game.time.events.loop(3000, this.makeItFaster, this);
@@ -222,7 +250,12 @@ var playState = {
       if (contain && game.input.activePointer.leftButton.isDown && this.graphs[i].alpha > 0) {
         this.fadeOut(this.graphs[i]);
         this.changeColor(this.colors[i]);
+        this.isClicked = true;
       }
+    }
+
+    if (!this.isClicked && game.input.activePointer.leftButton.isDown) {
+      alert('eita');
     }
 
     //they need to stay on stage for a while. This time gets shorter as the game plays
@@ -232,8 +265,6 @@ var playState = {
   },
   fadeOut: function (polygon) {
     game.add.tween(polygon).to( { alpha: 0 }, 350, Phaser.Easing.Exponential.Out, true, 0, 0, false);
-    console.log(this.polyDisplayed);
-    console.log(polygon.index);
 
     if (this.polyDisplayed.indexOf(polygon.index) > -1) {
       this.polyDisplayed.splice(this.polyDisplayed.indexOf(polygon.index), 1);
