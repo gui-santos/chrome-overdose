@@ -231,6 +231,7 @@ var playState = {
     this.whiteLine.lineTo(600, 200.6);
 
     //game status
+    game.playerLives = 3;
     this.isClicked = false;
     this.polyDisplayed = [];
 
@@ -255,9 +256,14 @@ var playState = {
     }
 
     //check if the player clicked in a wrong spot
-    if (!this.isClicked && game.input.activePointer.leftButton.isDown) {
-      console.log('errou');
+    if (!this.isClicked && game.input.activePointer.leftButton.isDown && game.playerLives > 0) {
+      game.playerLives--;
       this.isClicked = true;
+    }
+
+    //if the player missed 3 times, GAME OVER
+    if (game.playerLives === 0) {
+      this.gameOverTxt = game.add.text(80, 80, 'perd0000y', {font: '32px Arial', fill: '#ffffff'});
     }
 
     //reset the clicked event
@@ -267,7 +273,7 @@ var playState = {
 
     //end game if all the polygons showed up
     if (this.polyDisplayed.length === 21) {
-      this.gameOverTxt = game.add.text(80, 80, 'perd0000y', {font: '14px Arial', fill: '#ffffff'});
+      this.gameOverTxt = game.add.text(80, 80, 'perd0000y', {font: '32px Arial', fill: '#ffffff'});
     }
 
     //console.log(this.polyDisplayed.length);
