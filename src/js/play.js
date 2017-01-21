@@ -198,13 +198,19 @@ var playState = {
     for (var i = 0; i < this.polygons.length; i++) {
       this.graphs[i] = game.add.graphics(0, 0);
       this.graphs[i].boundsPadding = 0;
-      this.graphs[i].alpha = 1;
+      this.graphs[i].alpha = 0;
       this.graphs[i].beginFill(this.colors[i]);
       this.graphs[i].drawPolygon(this.polygons[i].points);
       this.graphs[i].endFill();
     }
 
-    //YELLOWs
+    //time
+    this.timeLoop = 1000;
+    this.polyIndex = Math.floor(Math.random() * (21 - 0)) + 0;
+    this.globalTime = game.time.events.loop(2000, this.makeItFaster, this);
+    this.showFreq = game.time.events.loop(500, this.showPoly, this);
+
+    this.fadeIn(this.graphs[this.polyIndex]);
   },
   update: function () {
     //collisions for REDs
@@ -217,11 +223,10 @@ var playState = {
       }
     }
 
-    //make the polygons show up randomly (1 ~ 7)
     //they need to stay on stage for a while. This time gets shorter as the game plays
   },
   fadeIn: function (polygon) {
-    game.add.tween(polygon).to( { alpha: 1 }, 350, Phaser.Easing.Exponential.Out, true, 0);
+    game.add.tween(polygon).to( { alpha: 1 }, 400, Phaser.Easing.Exponential.Out, true, 0);
   },
   fadeOut: function (polygon) {
     game.add.tween(polygon).to( { alpha: 0 }, 350, Phaser.Easing.Exponential.Out, true, 0, 0, false);
@@ -229,7 +234,16 @@ var playState = {
   changeColor: function (color) {
     game.stage.backgroundColor = color;
     this.body.style.background = color;
-    console.log(this.body);
+    //console.log(this.body);
     //game.fd.record(4);
+  },
+  showPoly: function () {
+    this.changeColor('0X000');
+    this.polyIndex = Math.floor(Math.random() * (21 - 0)) + 0;
+    this.fadeIn(this.graphs[this.polyIndex]);
+  },
+  makeItFaster: function () {
+    this.timeLoop = this.timeLoop / 2;
+    console.log(this.timeLoop);
   }
 }
