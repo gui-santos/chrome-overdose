@@ -305,7 +305,7 @@ var playState = {
     //check if the player clicked in a wrong spot
     if (!this.isClicked && game.input.activePointer.leftButton.isDown && game.playerLives > 0) {
       game.playerLives--;
-      game.sound.play('error');
+      game.sound.play('error', 5);
       this.isClicked = true;
     }
 
