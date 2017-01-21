@@ -7,6 +7,7 @@ game.state.add('load', loadState);
 game.state.add('menu', menuState);
 game.state.add('play', playState);
 //game.state.add('win', winState);
+game.state.add('credit', creditState);
 
 //start BootState
 game.state.start('boot');

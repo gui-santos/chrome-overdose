@@ -1,7 +1,7 @@
 //loads all the assets and call the menu
 var loadState = {
   preload: function () {
-    var label = game.add.text(80, 150, 'loading...', {font: '30px Roboto', fill: '#fff'});
+    var label = game.add.text(35, 30, 'loading...', {font: '24px munro', fill: '#fff'});
 
     game.load.video('logo', 'src/assets/gif_inicio.mp4');
     game.load.video('credits', 'src/assets/creditos_v1.mp4');
@@ -22,6 +22,10 @@ var loadState = {
     game.load.image('btn_home', 'src/assets/home/btn.jpg');
     game.load.image('btn_hover', 'src/assets/home/btn_hover.jpg');
     game.load.image('btn_press', 'src/assets/home/btn_press.jpg');
+
+    game.load.image('btn_back', 'src/assets/back/back.png');
+    game.load.image('btn_back_hover', 'src/assets/back/back_btn_hover.png');
+    game.load.image('btn_back_press', 'src/assets/back/back_btn_press.png');
   },
   create: function () {
     game.state.start('menu');

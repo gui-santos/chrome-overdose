@@ -243,6 +243,7 @@ var playState = {
 
     //time
     this.timeLoop = 1000;
+    this.timeSpeed = 0.05;
     this.polyIndex = Math.floor(Math.random() * (21 - 0)) + 0;
     this.globalTime = game.time.events.loop(7000, this.makeItFaster, this);
     this.showFreq = game.time.events.loop(this.timeLoop, this.showPoly, this);
@@ -362,7 +363,9 @@ var playState = {
 
   },
   makeItFaster: function () {
-    this.timeLoop = this.timeLoop / 2;
+    var timeFactor = this.timeLoop * this.timeSpeed;
+    this.timeLoop = this.timeLoop - timeFactor;
+    this.timeSpeed += 0.05;
     this.showFreq.delay = this.timeLoop;
   }
 }

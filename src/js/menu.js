@@ -15,7 +15,12 @@ var menuState = {
     this.startBtn.inputEnabled = true;
     this.startBtn.input.useHandCursor = true;
 
-    this.creditsLink = game.add.text(80, 80, 'credits', {font: '32px munro', fill: '#ffffff'});
+    this.creditsLink = game.add.text(35, 30, 'credits', {font: '24px munro', fill: '#ffffff'});
+    this.creditsLink.inputEnabled = true;
+    this.creditsLink.events.onInputDown.add(function () {
+      this.menuMusic.destroy();
+      game.state.start('credit');
+    }, this);
   },
   update: function () {
     //start game when the user left clicked
