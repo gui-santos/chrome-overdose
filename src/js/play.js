@@ -21,17 +21,24 @@ var playState = {
     };
 
     //storing graphics
-    this.red1 = game.add.graphics(0, 0);
-    this.red1.boundsPadding = 0;
-    this.red1.alpha = 1;
-    this.red1.beginFill(0xff0000);
-    this.red1.drawPolygon(this.polygons.red1.points);
-    this.red1.endFill();
+    this.graphs = [];
+
+    //REDs
+    this.graphs[0] = game.add.graphics(0, 0);
+    this.graphs[0].boundsPadding = 0;
+    this.graphs[0].alpha = 1;
+    this.graphs[0].beginFill(0xff0000);
+    this.graphs[0].drawPolygon(this.polygons.red1.points);
+    this.graphs[0].endFill();
   },
   update: function () {
-    //collision for RED 1
-    if (this.polygons.red1.contains(game.input.x, game.input.y) && game.input.activePointer.leftButton.isDown && this.red1.alpha > 0) {
-      this.fadeOut(this.red1);
+    //collisions for REDs
+    var redContain = [
+      this.polygons.red1.contains(game.input.x, game.input.y)
+    ];
+
+    if (redContain[0] && game.input.activePointer.leftButton.isDown && this.graphs[0].alpha > 0) {
+      this.fadeOut(this.graphs[0]);
       alert('deu');
     }
   },
