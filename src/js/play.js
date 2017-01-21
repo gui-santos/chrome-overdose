@@ -235,9 +235,9 @@ var playState = {
     this.polyDisplayed = [];
 
     //time
-    this.timeLoop = 500;
+    this.timeLoop = 1000;
     this.polyIndex = Math.floor(Math.random() * (21 - 0)) + 0;
-    this.globalTime = game.time.events.loop(3000, this.makeItFaster, this);
+    this.globalTime = game.time.events.loop(5000, this.makeItFaster, this);
     this.showFreq = game.time.events.loop(this.timeLoop, this.showPoly, this);
 
     this.fadeIn(this.graphs[this.polyIndex]);
@@ -299,6 +299,7 @@ var playState = {
   },
   makeItFaster: function () {
     this.timeLoop = this.timeLoop / 2;
+    this.showFreq.delay = this.timeLoop;
     console.log(this.timeLoop);
   }
 }
