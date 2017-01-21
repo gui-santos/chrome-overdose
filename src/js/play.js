@@ -199,16 +199,18 @@ var playState = {
       this.graphs[i] = game.add.graphics(0, 0);
       this.graphs[i].boundsPadding = 0;
       this.graphs[i].alpha = 0;
+      this.graphs[i].index = i;
       this.graphs[i].beginFill(this.colors[i]);
       this.graphs[i].drawPolygon(this.polygons[i].points);
       this.graphs[i].endFill();
     }
 
     //time
-    this.timeLoop = 1000;
+    this.polyDisplayed = [];
+    this.timeLoop = 500;
     this.polyIndex = Math.floor(Math.random() * (21 - 0)) + 0;
-    this.globalTime = game.time.events.loop(2000, this.makeItFaster, this);
-    this.showFreq = game.time.events.loop(500, this.showPoly, this);
+    this.globalTime = game.time.events.loop(3000, this.makeItFaster, this);
+    this.showFreq = game.time.events.loop(this.timeLoop, this.showPoly, this);
 
     this.fadeIn(this.graphs[this.polyIndex]);
   },
@@ -225,11 +227,17 @@ var playState = {
 
     //they need to stay on stage for a while. This time gets shorter as the game plays
   },
-  fadeIn: function (polygon) {
+  fadeIn: function (polygon, index) {
     game.add.tween(polygon).to( { alpha: 1 }, 400, Phaser.Easing.Exponential.Out, true, 0);
   },
   fadeOut: function (polygon) {
     game.add.tween(polygon).to( { alpha: 0 }, 350, Phaser.Easing.Exponential.Out, true, 0, 0, false);
+    console.log(this.polyDisplayed);
+    console.log(polygon.index);
+
+    if (this.polyDisplayed.indexOf(polygon.index) > -1) {
+      this.polyDisplayed.splice(this.polyDisplayed.indexOf(polygon.index), 1);
+    }
   },
   changeColor: function (color) {
     game.stage.backgroundColor = color;
@@ -240,7 +248,23 @@ var playState = {
   showPoly: function () {
     this.changeColor('0X000');
     this.polyIndex = Math.floor(Math.random() * (21 - 0)) + 0;
-    this.fadeIn(this.graphs[this.polyIndex]);
+
+    var displayed = false;
+
+    for (var i = 0; i < this.polyDisplayed.length; i++) {
+      if (this.polyIndex === this.polyDisplayed[i]) {
+        displayed = true;
+        return false
+      }
+    }
+
+    if (!displayed) {
+      this.fadeIn(this.graphs[this.polyIndex]);
+      this.polyDisplayed.push(this.polyIndex);
+    } else {
+      this.showPoly();
+    }
+
   },
   makeItFaster: function () {
     this.timeLoop = this.timeLoop / 2;
