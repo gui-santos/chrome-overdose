@@ -237,7 +237,7 @@ var playState = {
     //time
     this.timeLoop = 1000;
     this.polyIndex = Math.floor(Math.random() * (21 - 0)) + 0;
-    this.globalTime = game.time.events.loop(5000, this.makeItFaster, this);
+    this.globalTime = game.time.events.loop(2000, this.makeItFaster, this);
     this.showFreq = game.time.events.loop(this.timeLoop, this.showPoly, this);
 
     this.fadeIn(this.graphs[this.polyIndex]);
@@ -263,6 +263,11 @@ var playState = {
     //reset the clicked event
     if (this.isClicked && game.input.activePointer.leftButton.isUp) {
       this.isClicked = false;
+    }
+
+    //end game if all the polygons showed up
+    if (this.polyDisplayed.length === 21) {
+      this.gameOverTxt = game.add.text(80, 80, 'perd0000y', {font: '14px Arial', fill: '#ffffff'});
     }
 
     //console.log(this.polyDisplayed.length);
