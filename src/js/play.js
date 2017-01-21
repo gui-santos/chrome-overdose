@@ -6,6 +6,12 @@ var playState = {
     //this.placeholder.anchor.set(0.5);
     this.body = document.getElementsByTagName("body")[0];
 
+    //music & sound
+    this.mainMusic = game.add.audio('main', 1.5, true);
+    this.mainMusic.play();
+    this.mainMusicSprite = game.add.sprite(game.world.centerX, game.world.centerY);
+    this.mainMusicSprite.anchor.setTo(0.5, 0.5);
+
     //storing colors
     this.colors = [
       '0xff0000', //red1
@@ -251,6 +257,46 @@ var playState = {
       if (contain && game.input.activePointer.leftButton.isDown && this.graphs[i].alpha > 0) {
         this.fadeOut(this.graphs[i]);
         this.changeColor(this.colors[i]);
+
+        //play musical note correspondent
+        switch (i) {
+          case 0:
+          case 1:
+          case 2:
+            game.sound.play('c');
+            break;
+          case 3:
+          case 4:
+          case 5:
+            game.sound.play('d');
+            break;
+          case 6:
+          case 7:
+          case 8:
+            game.sound.play('e');
+            break;
+          case 9:
+          case 10:
+          case 11:
+            game.sound.play('f');
+            break;
+          case 12:
+          case 13:
+          case 14:
+            game.sound.play('g');
+            break;
+          case 15:
+          case 16:
+          case 17:
+            game.sound.play('a');
+            break;
+          case 18:
+          case 19:
+          case 20:
+            game.sound.play('b');
+            break;
+        }
+
         this.isClicked = true;
       }
     }
