@@ -16,6 +16,10 @@ var loadState = {
     game.load.audio('g', ['src/assets/sound/synth_nota5.mp3']);
     game.load.audio('a', ['src/assets/sound/synth_nota6.mp3']);
     game.load.audio('b', ['src/assets/sound/synth_nota7.mp3']);
+
+    game.load.image('btn_home', 'src/assets/home/btn.jpg');
+    game.load.image('btn_hover', 'src/assets/home/btn_hover.jpg');
+    game.load.image('btn_press', 'src/assets/home/btn_press.jpg');
   },
   create: function () {
     game.state.start('menu');

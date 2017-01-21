@@ -322,9 +322,6 @@ var playState = {
       this.gameOverTxt = game.add.text(80, 80, 'perd0000y', {font: '32px Arial', fill: '#ffffff'});
     }
 
-    //console.log(this.polyDisplayed.length);
-
-    //they need to stay on stage for a while. This time gets shorter as the game plays
   },
   fadeIn: function (polygon, index) {
     game.add.tween(polygon).to( { alpha: 1 }, 400, Phaser.Easing.Exponential.Out, true, 0);
@@ -347,10 +344,6 @@ var playState = {
     this.polyIndex = Math.floor(Math.random() * (21 - 0)) + 0;
 
     var displayed = false;
-
-    if (this.polyDisplayed.length === 21) {
-      alert('PERDEU OTÁRIO!');
-    }
 
     for (var i = 0; i < this.polyDisplayed.length; i++) {
       if (this.polyIndex === this.polyDisplayed[i]) {

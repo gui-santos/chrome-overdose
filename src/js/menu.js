@@ -1,20 +1,28 @@
 var menuState = {
   create: function () {
-    var title = game.add.text(80, 80, '[INSERT LOGO HERE]', {font: '32px Arial', fill: '#fff'});
-    var instruction = game.add.text(80, 200, 'left click to begin', {font: '32px Arial', fill: '#fff'});
-
     this.video = game.add.video('logo');
 
     this.video.play(true);
-    //this.video.loop(true);
 
-    //  x, y, anchor x, anchor y, scale x, scale y
     this.video.addToWorld();
+
+    this.startBtn = game.add.sprite(892, 314, 'btn_home');
+    this.startBtn.inputEnabled = true;
+    this.startBtn.input.useHandCursor = true;
   },
   update: function () {
     //start game when the user left clicked
-    if (game.input.activePointer.leftButton.isDown) {
-      game.state.start('play');
+    if (this.startBtn.input.pointerOver()) {
+      this.changeTexture(this.startBtn, 'btn_hover');
+    } else {
+      this.changeTexture(this.startBtn, 'btn_home');
     }
+
+    if (game.input.activePointer.leftButton.isDown) {
+      this.changeTexture(this.startBtn, 'btn_press');
+    }
+  },
+  changeTexture: function (sprite, newTexture) {
+    sprite.loadTexture(newTexture);
   }
 }
