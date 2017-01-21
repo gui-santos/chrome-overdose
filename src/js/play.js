@@ -161,7 +161,7 @@ var playState = {
       ]
     };
 
-    //storing polygons
+    //storing polygons [21]
     this.polygons = [];
     this.polygons[0] = new Phaser.Polygon(this.points.red1);
     this.polygons[1] = new Phaser.Polygon(this.points.red2);
@@ -170,6 +170,26 @@ var playState = {
     this.polygons[3] = new Phaser.Polygon(this.points.orange1);
     this.polygons[4] = new Phaser.Polygon(this.points.orange2);
     this.polygons[5] = new Phaser.Polygon(this.points.orange3);
+
+    this.polygons[6] = new Phaser.Polygon(this.points.yellow1);
+    this.polygons[7] = new Phaser.Polygon(this.points.yellow2);
+    this.polygons[8] = new Phaser.Polygon(this.points.yellow3);
+
+    this.polygons[9] = new Phaser.Polygon(this.points.green1);
+    this.polygons[10] = new Phaser.Polygon(this.points.green2);
+    this.polygons[11] = new Phaser.Polygon(this.points.green3);
+
+    this.polygons[12] = new Phaser.Polygon(this.points.blue1);
+    this.polygons[13] = new Phaser.Polygon(this.points.blue2);
+    this.polygons[14] = new Phaser.Polygon(this.points.blue3);
+
+    this.polygons[15] = new Phaser.Polygon(this.points.lpurple1);
+    this.polygons[16] = new Phaser.Polygon(this.points.lpurple2);
+    this.polygons[17] = new Phaser.Polygon(this.points.lpurple3);
+
+    this.polygons[18] = new Phaser.Polygon(this.points.purple1);
+    this.polygons[19] = new Phaser.Polygon(this.points.purple2);
+    this.polygons[20] = new Phaser.Polygon(this.points.purple3);
 
     //storing graphics
     this.graphs = [];
