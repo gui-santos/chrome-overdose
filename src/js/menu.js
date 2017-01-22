@@ -17,10 +17,17 @@ var menuState = {
 
     this.creditsLink = game.add.text(35, 30, 'credits', {font: '24px munro', fill: '#ffffff'});
     this.creditsLink.inputEnabled = true;
+    this.creditsLink.events.onInputOver.add(function () {
+      this.creditsLink.fill = '#01eeda';
+    }, this);
+    this.creditsLink.events.onInputOut.add(function () {
+      this.creditsLink.fill = '#ffffff';
+    }, this);
     this.creditsLink.events.onInputDown.add(function () {
       this.menuMusic.destroy();
       game.state.start('credit');
     }, this);
+
   },
   update: function () {
     //start game when the user left clicked

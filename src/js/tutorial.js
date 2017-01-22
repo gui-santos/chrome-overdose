@@ -17,6 +17,12 @@ var tutorialState = {
 
     this.backLink = game.add.text(35, 30, 'back', {font: '24px munro', fill: '#ffffff'});
     this.backLink.inputEnabled = true;
+    this.backLink.events.onInputOver.add(function () {
+      this.backLink.fill = '#01eeda';
+    }, this);
+    this.backLink.events.onInputOut.add(function () {
+      this.backLink.fill = '#ffffff';
+    }, this);
     this.backLink.events.onInputDown.add(function () {
       //this.menuMusic.destroy();
       game.state.start('menu');
