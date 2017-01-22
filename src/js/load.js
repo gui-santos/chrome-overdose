@@ -6,6 +6,8 @@ var loadState = {
     game.load.video('logo', 'src/assets/gif_inicio.mp4');
     game.load.video('credits', 'src/assets/creditos_v1.mp4');
     game.load.video('tutorial', 'src/assets/instructions.mp4');
+    game.load.video('newton', 'src/assets/newton.mp4');
+    game.load.video('win', 'src/assets/win.mp4');
 
     game.load.audio('main', ['src/assets/sound/leo_synthpop_gameplay.mp3']);
     game.load.audio('menu', ['src/assets/sound/leo_synthpop_menu.mp3']);
@@ -30,6 +32,14 @@ var loadState = {
     game.load.image('btn_start', 'src/assets/start/start_btn.png');
     game.load.image('btn_start_hover', 'src/assets/start/start_btn_hover.png');
     game.load.image('btn_start_press', 'src/assets/start/start_btn_press.png');
+
+    game.load.image('btn_again', 'src/assets/again/again_btn.png');
+    game.load.image('btn_again_hover', 'src/assets/again/again_btn_hover.png');
+    game.load.image('btn_again_press', 'src/assets/again/again_btn_press.png');
+
+    game.load.image('life3', 'src/assets/life_3.png');
+    game.load.image('life2', 'src/assets/life_2.png');
+    game.load.image('life1', 'src/assets/life_1.png');
   },
   create: function () {
     game.state.start('menu');

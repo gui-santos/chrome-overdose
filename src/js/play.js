@@ -12,6 +12,14 @@ var playState = {
     this.mainMusicSprite = game.add.sprite(game.world.centerX, game.world.centerY);
     this.mainMusicSprite.anchor.setTo(0.5, 0.5);
 
+    //newton
+    this.video = game.add.video('newton');
+    this.video.play(true);
+    this.video.addToWorld(0, 0);
+
+    //life_3
+    this.life = game.add.sprite(166, 31, 'life3');
+
     //storing colors
     this.colors = [
       '0xff0000', //red1
@@ -238,6 +246,7 @@ var playState = {
 
     //game status
     game.playerLives = 3;
+    game.playerScore = 0;
     this.isClicked = false;
     this.polyDisplayed = [];
 
@@ -247,6 +256,7 @@ var playState = {
     this.polyIndex = Math.floor(Math.random() * (21 - 0)) + 0;
     this.globalTime = game.time.events.loop(7000, this.makeItFaster, this);
     this.showFreq = game.time.events.loop(this.timeLoop, this.showPoly, this);
+    this.endGame = game.time.events.loop(160000, this.winGame, this); // 160k miliseconds is the time of the song
 
     this.fadeIn(this.graphs[this.polyIndex]);
   },
@@ -298,6 +308,37 @@ var playState = {
             break;
         }
 
+        //store score for each polygon
+        switch (i) {
+          case 0:
+          case 3:
+          case 6:
+          case 9:
+          case 12:
+          case 15:
+          case 18:
+            game.playerScore += 750;
+            break;
+          case 1:
+          case 4:
+          case 7:
+          case 10:
+          case 13:
+          case 16:
+          case 19:
+            game.playerScore += 500;
+            break;
+          case 2:
+          case 5:
+          case 8:
+          case 11:
+          case 14:
+          case 17:
+          case 20:
+            game.playerScore += 250;
+            break;
+        }
+
         this.isClicked = true;
       }
     }
@@ -307,11 +348,24 @@ var playState = {
       game.playerLives--;
       game.sound.play('error', 5);
       this.isClicked = true;
+
+      switch (game.playerLives) {
+        case 2:
+          this.changeTexture(this.life, 'life2');
+          break;
+        case 1:
+          this.changeTexture(this.life, 'life1');
+          break;
+        default:
+          this.life.alpha = 0;
+      }
     }
 
     //if the player missed 3 times, GAME OVER
     if (game.playerLives === 0) {
-      this.gameOverTxt = game.add.text(80, 80, 'perd0000y', {font: '32px Arial', fill: '#ffffff'});
+      //this.gameOverTxt = game.add.text(80, 80, 'perd0000y', {font: '32px Arial', fill: '#ffffff'});
+      game.state.start('lost');
+      this.mainMusic.destroy();
     }
 
     //reset the clicked event
@@ -321,7 +375,9 @@ var playState = {
 
     //end game if all the polygons showed up
     if (this.polyDisplayed.length === 21) {
-      this.gameOverTxt = game.add.text(80, 80, 'perd0000y', {font: '32px Arial', fill: '#ffffff'});
+      //this.gameOverTxt = game.add.text(80, 80, 'perd0000y', {font: '32px Arial', fill: '#ffffff'});
+      game.state.start('lost');
+      this.mainMusic.destroy();
     }
 
   },
@@ -367,5 +423,17 @@ var playState = {
     this.timeLoop = this.timeLoop - timeFactor;
     this.timeSpeed += 0.05;
     this.showFreq.delay = this.timeLoop;
+  },
+  changeTexture: function (sprite, newTexture) {
+    sprite.loadTexture(newTexture);
+  },
+  winGame: function () {
+    game.state.start('win');
+    this.mainMusic.destroy();
+  },
+  render: function () {
+
+    game.debug.text('Elapsed seconds: ' + this.game.time.totalElapsedSeconds(), 32, 32);
+
   }
 }
