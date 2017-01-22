@@ -18,7 +18,7 @@ var playState = {
     this.video.addToWorld(0, 0);
 
     //life_3
-    this.life = game.add.sprite(166, 31, 'life3');
+    this.life = game.add.sprite(166, 31, 'life5');
 
     //storing colors
     this.colors = [
@@ -245,7 +245,7 @@ var playState = {
     this.whiteLine.lineTo(600, 200.6);
 
     //game status
-    game.playerLives = 3;
+    game.playerLives = 5;
     game.playerScore = 0;
     this.isClicked = false;
     this.polyDisplayed = [];
@@ -354,8 +354,15 @@ var playState = {
       game.playerLives--;
       game.sound.play('error', 5);
       this.isClicked = true;
+      console.log(game.playerLives);
 
       switch (game.playerLives) {
+        case 4:
+          this.changeTexture(this.life, 'life4');
+          break;
+        case 3:
+          this.changeTexture(this.life, 'life3');
+          break;
         case 2:
           this.changeTexture(this.life, 'life2');
           break;
@@ -381,14 +388,14 @@ var playState = {
 
     //end game if all the polygons showed up
     if (this.polyDisplayed.length === 21) {
-      //this.gameOverTxt = game.add.text(80, 80, 'perd0000y', {font: '32px Arial', fill: '#ffffff'});
+      this.gameOverTxt = game.add.text(80, 80, 'perd0000y', {font: '32px Arial', fill: '#ffffff'});
       game.state.start('lost');
       this.mainMusic.destroy();
     }
 
   },
   fadeIn: function (polygon, index) {
-    game.add.tween(polygon).to( { alpha: 0.7 }, 400, Phaser.Easing.Exponential.Out, true, 0);
+    game.add.tween(polygon).to( { alpha: 0.65 }, 400, Phaser.Easing.Exponential.Out, true, 0);
   },
   fadeOut: function (polygon) {
     game.add.tween(polygon).to( { alpha: 0 }, 350, Phaser.Easing.Exponential.Out, true, 0, 0, false);

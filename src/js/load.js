@@ -38,6 +38,8 @@ var loadState = {
     game.load.image('btn_again_hover', 'src/assets/again/again_btn_hover.png');
     game.load.image('btn_again_press', 'src/assets/again/again_btn_press.png');
 
+    game.load.image('life5', 'src/assets/life_5.png');
+    game.load.image('life4', 'src/assets/life_4.png');
     game.load.image('life3', 'src/assets/life_3.png');
     game.load.image('life2', 'src/assets/life_2.png');
     game.load.image('life1', 'src/assets/life_1.png');
