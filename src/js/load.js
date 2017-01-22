@@ -8,6 +8,7 @@ var loadState = {
     game.load.video('tutorial', 'src/assets/instructions.mp4');
     game.load.video('newton', 'src/assets/newton.mp4');
     game.load.video('win', 'src/assets/win.mp4');
+    game.load.video('lost', 'src/assets/lost.mp4');
 
     game.load.audio('main', ['src/assets/sound/leo_synthpop_gameplay.mp3']);
     game.load.audio('menu', ['src/assets/sound/leo_synthpop_menu.mp3']);

@@ -1,11 +1,11 @@
-var winState = {
+var lostState = {
   create: function () {
     this.menuMusic = game.add.audio('menu', 1, true);
     this.menuMusic.play();
     this.menuMusicSprite = game.add.sprite(game.world.centerX, game.world.centerY);
     this.menuMusicSprite.anchor.setTo(0.5, 0.5);
 
-    this.video = game.add.video('win');
+    this.video = game.add.video('lost');
     this.video.play(true);
     this.video.addToWorld();
 
@@ -28,7 +28,7 @@ var winState = {
       game.sound.play('f');
       this.menuMusic.destroy();
       game.time.events.loop(250, function () {
-        game.state.start('play');
+        game.state.start('menu');
       }, this);
     }
   },

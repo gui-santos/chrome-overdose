@@ -250,6 +250,9 @@ var playState = {
     this.isClicked = false;
     this.polyDisplayed = [];
 
+    this.score = game.add.text(1165, 470, game.playerScore, {font: '24px munro', fill: '#ffffff', align: 'right'});
+    this.score.anchor.setTo(1, 1);
+
     //time
     this.timeLoop = 1000;
     this.timeSpeed = 0.05;
@@ -318,6 +321,7 @@ var playState = {
           case 15:
           case 18:
             game.playerScore += 750;
+            this.score.setText(game.playerScore);
             break;
           case 1:
           case 4:
@@ -327,6 +331,7 @@ var playState = {
           case 16:
           case 19:
             game.playerScore += 500;
+            this.score.setText(game.playerScore);
             break;
           case 2:
           case 5:
@@ -336,6 +341,7 @@ var playState = {
           case 17:
           case 20:
             game.playerScore += 250;
+            this.score.setText(game.playerScore);
             break;
         }
 
@@ -433,7 +439,7 @@ var playState = {
   },
   render: function () {
 
-    game.debug.text('Elapsed seconds: ' + this.game.time.totalElapsedSeconds(), 32, 32);
+    //game.debug.text('Elapsed seconds: ' + this.game.time.totalElapsedSeconds(), 32, 32);
 
   }
 }
