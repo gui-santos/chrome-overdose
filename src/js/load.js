@@ -6,7 +6,7 @@ var loadState = {
     game.load.video('logo', 'src/assets/gif_inicio.mp4');
     game.load.video('credits', 'src/assets/creditos_v1.mp4');
     game.load.video('tutorial', 'src/assets/instructions.mp4');
-    game.load.video('newton', 'src/assets/newton.mp4');
+    //game.load.video('newton', 'src/assets/newton.mp4');
     game.load.video('win', 'src/assets/win.mp4');
     game.load.video('lost', 'src/assets/lost.mp4');
 
@@ -21,6 +21,9 @@ var loadState = {
     game.load.audio('a', ['src/assets/sound/synth_nota6.mp3']);
     game.load.audio('b', ['src/assets/sound/synth_nota7.mp3']);
     game.load.audio('error', ['src/assets/sound/synth_notaerrada.mp3']);
+
+    game.load.spritesheet('newton', 'src/assets/newton_sprite.png', 85, 110, 8);
+    game.load.image('newton_error', 'src/assets/newton_error.png');
 
     game.load.image('btn_home', 'src/assets/home/btn.jpg');
     game.load.image('btn_hover', 'src/assets/home/btn_hover.jpg');

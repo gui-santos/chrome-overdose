@@ -13,9 +13,9 @@ var playState = {
     this.mainMusicSprite.anchor.setTo(0.5, 0.5);
 
     //newton
-    this.video = game.add.video('newton');
-    this.video.play(true);
-    this.video.addToWorld(0, 0);
+    this.sprite = game.add.sprite(30, 30, 'newton');
+    this.sprite.animations.add('idle');
+    this.sprite.animations.play('idle', 16, true);
 
     //life_3
     this.life = game.add.sprite(166, 31, 'life5');
@@ -354,7 +354,8 @@ var playState = {
       game.playerLives--;
       game.sound.play('error', 5);
       this.isClicked = true;
-      console.log(game.playerLives);
+
+      this.sprite.loadTexture('newton_error');
 
       switch (game.playerLives) {
         case 4:
@@ -384,6 +385,8 @@ var playState = {
     //reset the clicked event
     if (this.isClicked && game.input.activePointer.leftButton.isUp) {
       this.isClicked = false;
+      this.sprite.loadTexture('newton');
+      this.sprite.animations.play('idle', 16, true);
     }
 
     //end game if all the polygons showed up
